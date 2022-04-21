@@ -74,7 +74,6 @@ class SSTDataset(Dataset):
         logger.info("Tokenizing")
         if root and binary:
             #MY ADDITION START
-
             self.data = [
                 (
                     rpad(
@@ -84,6 +83,8 @@ class SSTDataset(Dataset):
                     label,
                 )
                 for label, line in iterr
+        else:
+            print("Invalid  run, not yet ready")
 #                for file in os.listdir(path_test_pos) 
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
@@ -126,8 +127,7 @@ class SSTDataset(Dataset):
                 if label != 2
             ]
             """
-        else:
-            print("Invalid  run, not yet ready")
+
 
     def __len__(self):
         return len(self.data)
