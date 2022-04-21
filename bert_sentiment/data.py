@@ -8,10 +8,13 @@ from torch.utils.data import Dataset
 
 #MY ADDITION START
 import os
+from torchtext.datasets import IMDB
 
-path_test_pos = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/test/pos"
-path_test_neg = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/test/neg"
-training_path = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/train"
+train_iter = IMDB(split='train')
+test_iter = IMDB(split='test')
+#path_test_pos = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/test/pos"
+#path_test_neg = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/test/neg"
+#training_path = "/home/aabuzaid/Desktop/bert-sentiment-master/bert-sentiment-master/aclImdb/train"
 
 #MY ADDITION END
 
@@ -70,21 +73,23 @@ class SSTDataset(Dataset):
             self.data = [
                 (
                     rpad(
-                        tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
+                        #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
+                        tokenizer.encode("[CLS] " + line + " [SEP]"), n=66
                     ),
-                    1,
+                    label,
                 )
-                for file in os.listdir(path_test_pos) 
+                for label, line in train_iter
+#                for file in os.listdir(path_test_pos) 
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
 
-                (
-                    rpad(
-                        tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
-                    ),
-                    0,
-                )
-                for file in os.listdir(path_test_neg)
+#                (
+#                    rpad(
+#                        tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
+#                    ),
+#                    0,
+#                )
+#                for file in os.listdir(path_test_neg)
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
             #MY ADDITION END
