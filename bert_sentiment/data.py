@@ -99,7 +99,7 @@ class SSTDataset(Dataset):
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
             #MY ADDITION END
-            ]
+#            ]
 """        elif root and not binary:
             self.data = [
                 (
@@ -127,8 +127,6 @@ class SSTDataset(Dataset):
                 if label != 2
             ]
             """
-
-
     def __len__(self):
         return len(self.data)
 
