@@ -83,50 +83,7 @@ class SSTDataset(Dataset):
                     label,
                 )
                 for label, line in iterr
-        #else:
-         #   print("Invalid  run, not yet ready")
-#                for file in os.listdir(path_test_pos) 
-#                open(path + "/" + file, 'r') as f:
-#                        word = f.read()
 
-#                (
-#                    rpad(
-#                        tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
-#                    ),
-#                    0,
-#                )
-#                for file in os.listdir(path_test_neg)
-#                open(path + "/" + file, 'r') as f:
-#                        word = f.read()
-            #MY ADDITION END
-#            ]
-"""        elif root and not binary:
-            self.data = [
-                (
-                    rpad(
-                        tokenizer.encode("[CLS] " + tree.to_lines()[0] + " [SEP]"), n=66
-                    ),
-                    tree.label,
-                )
-                for tree in self.sst
-            ]
-        elif not root and not binary:
-            self.data = [
-                (rpad(tokenizer.encode("[CLS] " + line + " [SEP]"), n=66), label)
-                for tree in self.sst
-                for label, line in tree.to_labeled_lines()
-            ]
-        else:
-            self.data = [
-                (
-                    rpad(tokenizer.encode("[CLS] " + line + " [SEP]"), n=66),
-                    get_binary_label(label),
-                )
-                for tree in self.sst
-                for label, line in tree.to_labeled_lines()
-                if label != 2
-            ]
-            """
     def __len__(self):
         return len(self.data)
 
