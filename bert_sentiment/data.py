@@ -77,7 +77,7 @@ class SSTDataset(Dataset):
                 (
                     rpad(
                         #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
-                        tokenizer.encode("[CLS] " + line[:511] + " [SEP]"), n=512
+                        tokenizer.encode("[CLS] " + line[:400] + " [SEP]"), n=420
                     ),
                     get_binary_label(label),
                 )
