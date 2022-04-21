@@ -82,7 +82,6 @@ class SSTDataset(Dataset):
                     get_binary_label(label),
                 )
                 for label, line in iterr
-                if(len(line) >= 512)
             ]
         else:
             print("Error")
