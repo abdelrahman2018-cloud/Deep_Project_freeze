@@ -68,9 +68,15 @@ def train(
     if not binary:
         config.num_labels = 5
     model = BertForSequenceClassification.from_pretrained(bert, config=config)
-    for name, param in model.named_parameters():
-	    if 'classifier' not in name: # classifier layer
-		    param.requires_grad = False
+
+    modules = [model.embeddings, *model.encoder.layer[:5]]
+    for module in modules:
+        for param in module.parameters():
+            param.requires_grad = False
+
+#    for name, param in model.named_parameters():
+#	    if 'classifier' not in name: # classifier layer
+#		    param.requires_grad = False
     model = model.to(device)
     lossfn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-5)
