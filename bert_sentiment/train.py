@@ -61,7 +61,7 @@ def train(
     save=False,
 ):
     trainset = SSTDataset("train", root=root, binary=binary)
-    devset = SSTDataset("dev", root=root, binary=binary)
+    #devset = SSTDataset("dev", root=root, binary=binary)
     testset = SSTDataset("test", root=root, binary=binary)
 
     config = BertConfig.from_pretrained(bert)
