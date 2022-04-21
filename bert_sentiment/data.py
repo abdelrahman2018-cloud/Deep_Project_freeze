@@ -36,10 +36,11 @@ def rpad(array, n=70):
 
 def get_binary_label(label):
     """Convert fine-grained label to binary label."""
-    if label < 2:
-        return 0
-    if label > 2:
+    print("label: ", label)
+    if label == 'pos':
         return 1
+    elif label == 'neg':
+        return 0
     raise ValueError("Invalid label")
 
 
@@ -79,7 +80,7 @@ class SSTDataset(Dataset):
                         #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
                         tokenizer.encode("[CLS] " + line[:511] + " [SEP]"), n=66
                     ),
-                    label,
+                    get_binary_label(label),
                 )
                 for label, line in iterr
                 if(len(line) >= 512)
