@@ -18,7 +18,7 @@ def train_one_epoch(model, lossfn, optimizer, dataset, batch_size=32):
     model.train()
     train_loss, train_acc = 0.0, 0.0
     for batch, labels in tqdm(generator):
-        batch, labels = torch.tensor(batch).to(device), torch.tensor(labels).to(device)
+        batch, labels = batch.to(device), labels.to(device)
         optimizer.zero_grad()
         loss, logits = model(batch, labels=labels)
         err = lossfn(logits, labels)
