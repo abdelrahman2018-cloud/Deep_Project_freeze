@@ -64,8 +64,11 @@ class SSTDataset(Dataset):
                 If true, use binary labels. Else, use fine-grained.
         """
         logger.info(f"Loading iMDB {split} set")
-        self.sst = sst[split]
-
+        #self.sst = sst[split]
+        if(split == "train") iter = train_iter
+        else iter = test_iter
+        
+        
         logger.info("Tokenizing")
         if root and binary:
             #MY ADDITION START
@@ -78,7 +81,7 @@ class SSTDataset(Dataset):
                     ),
                     label,
                 )
-                for label, line in train_iter
+                for label, line in iter
 #                for file in os.listdir(path_test_pos) 
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
