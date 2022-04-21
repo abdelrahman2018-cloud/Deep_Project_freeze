@@ -63,26 +63,26 @@ class SSTDataset(Dataset):
             binary: bool
                 If true, use binary labels. Else, use fine-grained.
         """
-    logger.info(f"Loading IMDB {split} set")
+        logger.info(f"Loading IMDB {split} set")
         #self.sst = sst[split]
-    if(split == "train"):
-        iterr = IMDB(split='train')
-    else:   
-        iterr = IMDB(split='test') 
+        if(split == "train"):
+            iterr = IMDB(split='train')
+        else:   
+            iterr = IMDB(split='test') 
         
-    logger.info("Tokenizing")
-    if root and binary:
+        logger.info("Tokenizing")
+        if root and binary:
             #MY ADDITION START
-        self.data = [
-            (
-                rpad(
-                   #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
-                    tokenizer.encode("[CLS] " + line + " [SEP]"), n=66
-                ),
-                label,
-            )
-        for label, line in iterr
-        ]
+            self.data = [
+                (
+                    rpad(
+                        #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
+                        tokenizer.encode("[CLS] " + line + " [SEP]"), n=66
+                    ),
+                    label,
+                )
+            for label, line in iterr
+            ]
 
     def __len__(self):
         return len(self.data)
