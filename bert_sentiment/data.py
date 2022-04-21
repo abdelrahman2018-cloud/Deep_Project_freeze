@@ -36,7 +36,6 @@ def rpad(array, n=70):
 
 def get_binary_label(label):
     """Convert fine-grained label to binary label."""
-    print("label: ", label)
     if label == 'pos':
         return 1
     elif label == 'neg':
