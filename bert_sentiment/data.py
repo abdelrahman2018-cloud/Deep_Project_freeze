@@ -65,8 +65,8 @@ class SSTDataset(Dataset):
         """
         logger.info(f"Loading iMDB {split} set")
         #self.sst = sst[split]
-        if(split == "train") iter = train_iter
-        else iter = test_iter
+        if(split == "train") iter = IMDB(split='train')
+        else iter = IMDB(split='test')
         
         
         logger.info("Tokenizing")
