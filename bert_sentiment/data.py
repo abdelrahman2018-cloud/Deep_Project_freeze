@@ -97,7 +97,7 @@ class SSTDataset(Dataset):
 #                        word = f.read()
             #MY ADDITION END
             ]
-        elif root and not binary:
+"""        elif root and not binary:
             self.data = [
                 (
                     rpad(
@@ -123,6 +123,8 @@ class SSTDataset(Dataset):
                 for label, line in tree.to_labeled_lines()
                 if label != 2
             ]
+            """
+        else print("Invalid  run, not yet ready")
 
     def __len__(self):
         return len(self.data)
