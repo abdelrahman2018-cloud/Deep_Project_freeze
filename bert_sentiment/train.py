@@ -57,7 +57,7 @@ def train(
     binary=False,
     bert="bert-base-uncased",
     epochs=10,
-    batch_size=16,
+    batch_size=8,
     save=False,
 ):
     trainset = SSTDataset("train", root=root, binary=binary)
