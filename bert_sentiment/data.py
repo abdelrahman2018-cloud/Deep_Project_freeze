@@ -77,11 +77,12 @@ class SSTDataset(Dataset):
                 (
                     rpad(
                         #tokenizer.encode("[CLS] " + open(path + "/" + file, 'r').read() + " [SEP]"), n=66
-                        tokenizer.encode("[CLS] " + line[:400] + " [SEP]"), n=420
+                        tokenizer.encode("[CLS] " + line[:511] + " [SEP]"), n=66
                     ),
                     get_binary_label(label),
                 )
                 for label, line in iterr
+                if(len(line) <= 512)
             ]
         else:
             print("Error")
