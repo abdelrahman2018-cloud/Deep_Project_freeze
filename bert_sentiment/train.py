@@ -55,8 +55,8 @@ def evaluate_one_epoch(model, lossfn, optimizer, dataset, batch_size=32):
 def train(
     root=True,
     binary=False,
-    bert="bert-large-uncased",
-    epochs=7,
+    bert="bert-base-uncased",
+    epochs=10,
     batch_size=32,
     save=False,
 ):
