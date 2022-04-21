@@ -126,7 +126,8 @@ class SSTDataset(Dataset):
                 if label != 2
             ]
             """
-        else print("Invalid  run, not yet ready")
+        else:
+            print("Invalid  run, not yet ready")
 
     def __len__(self):
         return len(self.data)
