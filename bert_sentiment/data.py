@@ -83,8 +83,8 @@ class SSTDataset(Dataset):
                     label,
                 )
                 for label, line in iterr
-        else:
-            print("Invalid  run, not yet ready")
+        #else:
+         #   print("Invalid  run, not yet ready")
 #                for file in os.listdir(path_test_pos) 
 #                open(path + "/" + file, 'r') as f:
 #                        word = f.read()
