@@ -84,10 +84,10 @@ class SSTDataset(Dataset):
                 )
                 for label, line in iterr
 
-    def __len__(self):
-        return len(self.data)
+        def __len__(self):
+            return len(self.data)
 
-    def __getitem__(self, index):
-        X, y = self.data[index]
-        X = torch.tensor(X)
-        return X, y
+        def __getitem__(self, index):
+            X, y = self.data[index]
+            X = torch.tensor(X)
+            return X, y
