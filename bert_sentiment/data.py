@@ -63,7 +63,7 @@ class SSTDataset(Dataset):
             binary: bool
                 If true, use binary labels. Else, use fine-grained.
         """
-    logger.info(f"Loading iMDB {split} set")
+    logger.info(f"Loading IMDB {split} set")
         #self.sst = sst[split]
     if(split == "train"):
         iterr = IMDB(split='train')
