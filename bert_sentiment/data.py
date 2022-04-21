@@ -82,6 +82,7 @@ class SSTDataset(Dataset):
                 label,
             )
         for label, line in iterr
+        ]
 
     def __len__(self):
         return len(self.data)
