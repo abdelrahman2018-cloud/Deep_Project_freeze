@@ -56,7 +56,7 @@ def train(
     root=True,
     binary=False,
     bert="bert-large-uncased",
-    epochs=10,
+    epochs=7,
     batch_size=32,
     save=False,
 ):
@@ -77,18 +77,18 @@ def train(
         train_loss, train_acc = train_one_epoch(
             model, lossfn, optimizer, trainset, batch_size=batch_size
         )
-        val_loss, val_acc = evaluate_one_epoch(
-            model, lossfn, optimizer, devset, batch_size=batch_size
-        )
+       # val_loss, val_acc = evaluate_one_epoch(
+        #    model, lossfn, optimizer, devset, batch_size=batch_size
+        #)
         test_loss, test_acc = evaluate_one_epoch(
             model, lossfn, optimizer, testset, batch_size=batch_size
         )
         logger.info(f"epoch={epoch}")
         logger.info(
-            f"train_loss={train_loss:.4f}, val_loss={val_loss:.4f}, test_loss={test_loss:.4f}"
+            f"train_loss={train_loss:.4f}, test_loss={test_loss:.4f}"
         )
         logger.info(
-            f"train_acc={train_acc:.3f}, val_acc={val_acc:.3f}, test_acc={test_acc:.3f}"
+            f"train_acc={train_acc:.3f}, test_acc={test_acc:.3f}"
         )
         if save:
             label = "binary" if binary else "fine"
